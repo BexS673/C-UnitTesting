@@ -1,0 +1,12 @@
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Filter.deps.json
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Filter.dll
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Filter.pdb
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Filter.csproj.AssemblyReference.cache
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Filter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Filter.AssemblyInfoInputs.cache
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Filter.AssemblyInfo.cs
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Filter.csproj.CoreCompileInputs.cache
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Filter.dll
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\refint\Filter.dll
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Filter.pdb
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\ref\Filter.dll

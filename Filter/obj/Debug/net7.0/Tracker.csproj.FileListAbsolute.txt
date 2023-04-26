@@ -1,0 +1,15 @@
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Tracker.deps.json
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Tracker.dll
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Tracker.pdb
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.csproj.AssemblyReference.cache
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.AssemblyInfoInputs.cache
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.AssemblyInfo.cs
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.csproj.CoreCompileInputs.cache
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.dll
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\refint\Tracker.dll
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.pdb
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\ref\Tracker.dll
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Tracker.exe
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\bin\Debug\net7.0\Tracker.runtimeconfig.json
+C:\Users\rsaye\OneDrive\Documents\Capgemini\Capgemini\unit-testing-using-nunit\Filter\obj\Debug\net7.0\Tracker.genruntimeconfig.cache
