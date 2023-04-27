@@ -92,15 +92,11 @@ namespace Tracker.Tests
 
         private double[] vector;
 
-        [TestCase(0, 0, 0, ExpectedResult = 0) ]
-        [TestCase(-1, 0, 0, ExpectedResult = 0)]
-        [TestCase(-1, 0, 1, ExpectedResult = 0)]
-        public double TestMuliplyVectorScalar(double scalar, double v1, double v2)
+        [TestCase(0, new double[] {0, 0}, new double[] { 0, 0 }, TestName = "ScalarMultiply0")]
+        [TestCase(-1, new double[] { 0, 0 }, new double[] { 0, 0 }, TestName ="ScalarMultiplyNegative")] 
+        public void TestMuliplyVectorScalar(double scalar, double[] vector, double[] expectedVector)
         {
-            //double[] vector = new double[2];
-            vector[0] = v1;
-            vector[1] = v2;
-            return Matrices.MultiplyVectorScalar(scalar, vector)[0];
+            Assert.That(expectedVector, Is.EquivalentTo(Matrices.MultiplyVectorScalar(scalar, vector)));
         }
 
         //[Test]
