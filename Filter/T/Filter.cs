@@ -111,7 +111,7 @@ namespace Tracker.T
 
         }
 
-        public void UpdateData(double t = 2.0, double v1= 10.0, double v2 = 1.0) //should this be public or called through the UpdatePath method
+        public void UpdateData(double t = 2.0, double v1 = 10.0, double v2 = 1.0) //should this be public or called through the UpdatePath method
         {
             filterTime += t;
             Vector1[0] += v1;

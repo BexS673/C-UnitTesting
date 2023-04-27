@@ -50,7 +50,7 @@ namespace Tracker.Tests
         }
 
         [TestCaseSource(typeof(DataClass), nameof(DataClass.ConversionCases))]
-        //[TesCaset]
+        //[Test]
         //[FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
         public double TestOutput(double time, double v1, double v2)
         {
@@ -62,7 +62,7 @@ namespace Tracker.Tests
 
             //Assert.That(testMail.Range, Is.EqualTo(628.117226)); //rounded to 6 digits
             //angle test
-            return 628.117226;
+            return testMail.Range;
             //Assert.That(Tolerance(628.117226, testMail.Range, 0.00001), Is.True, $"Range calculated as: {testMail.Range}");
         }
         public class DataClass
@@ -72,12 +72,52 @@ namespace Tracker.Tests
                 get
                 {
                     yield return new TestCaseData(2, 10, 1).Returns(628.117226);
+                    yield return new TestCaseData(0, 0, 0).Returns(0.000000);
                 }
             }
 
         }
-    }
- 
 
+    }
+
+    [TestFixture]
+    public class MatricesTest
+    {
+
+        [SetUp]
+        public void Setup()
+        {
+            vector = new double[2];
+        }
+
+        private double[] vector;
+
+        [TestCase(0, 0, 0, ExpectedResult = 0) ]
+        [TestCase(-1, 0, 0, ExpectedResult = 0)]
+        [TestCase(-1, 0, 1, ExpectedResult = 0)]
+        public double TestMuliplyVectorScalar(double scalar, double v1, double v2)
+        {
+            //double[] vector = new double[2];
+            vector[0] = v1;
+            vector[1] = v2;
+            return Matrices.MultiplyVectorScalar(scalar, vector)[0];
+        }
+
+        //[Test]
+        //public void TestAddVectors(
+        //    [Values(-1, 0, 1)] double v1,
+        //    [Range(-1, 1, 1)] double v2,
+        //    [Values(-1, 0, 1)] double v3,
+        //    [Range(-1, 0, 1)] double v4)
+        //{
+        //    double[] vector2 = new double[2];
+        //    vector2[0] = v1;
+        //    vector2[1] = v2;
+        //    vector[0] = v3;
+        //    vector[1] = v4;
+
+        //    Matrices.AddVector(vector, vector2);
+        //}
+    }
 
 }
