@@ -4,6 +4,20 @@
     {
         private double range;
         private double bearing;
+        //private int mailId;
+
+        //public int MailId
+        //{
+        //    get
+        //    {
+                      
+        //        return mailId;
+        //    }
+        //    set
+        //    {
+        //        mailId++;
+        //    }
+        //}
         public double Range
         {
             get

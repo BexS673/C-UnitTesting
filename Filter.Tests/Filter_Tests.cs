@@ -35,7 +35,7 @@ namespace Tracker.Tests
         [SetUp]
         public void SetUp()
         {
-            _filter = new Filter();
+            _filter = Filter.Instance;
             _filter.InitialiseData();
         }
 
@@ -71,7 +71,7 @@ namespace Tracker.Tests
             {
                 get
                 {
-                    yield return new TestCaseData(2, 10, 1).Returns(628.117226);
+                    yield return new TestCaseData(2, 10, 1).Returns(628.117226); //updated the update values so change
                     yield return new TestCaseData(0, 0, 0).Returns(0.000000);
                 }
             }

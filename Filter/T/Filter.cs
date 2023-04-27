@@ -17,9 +17,28 @@ namespace Tracker.T
             initialise,
             normal,
             update
-        }      
+        }
 
         //vector should be of type tFloatType, which is float restricted to 6 digits
+
+        private static Filter instance = null;
+        private static readonly object padlock = new object();
+        Filter() { }
+
+        public static Filter Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Filter();
+                    }
+                    return instance;
+                }
+            }
+        }
 
 
         private struct TargetType
@@ -72,8 +91,8 @@ namespace Tracker.T
             double temp_y;
             mail = new Mail();
 
-            if (isSmooth == false)
-            {
+            //if (isSmooth == false)
+            //{
                 temp_x = Vector2[0];
                 temp_y = Vector2[1];
                 Convert_Cartesian_To_Polar(in temp_x, in temp_y, out TargetData.Angle, out TargetData.Distance, Types.KV);
@@ -81,7 +100,7 @@ namespace Tracker.T
 
                 mail.Bearing = TargetData.Angle;
                 mail.Range = TargetData.Distance;
-            }
+            //}
                         
             
 
@@ -111,7 +130,7 @@ namespace Tracker.T
 
         }
 
-        public void UpdateData(double t = 2.0, double v1 = 10.0, double v2 = 1.0) //should this be public or called through the UpdatePath method
+        public void UpdateData(double t = 2.0, double v1 = 0.10, double v2 = 0.01) //should this be public or called through the UpdatePath method
         {
             filterTime += t;
             Vector1[0] += v1;
