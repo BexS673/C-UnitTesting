@@ -78,6 +78,19 @@ namespace Tracker.Tests
 
         }
 
+        [Test]
+        public void TestNewMailInstance()
+        {
+            Mail testMail;
+            _filter.Output(out testMail);
+            Mail mail1 = testMail;
+
+            _filter.Output(out testMail);
+            Mail mail2 = testMail;
+
+            Assert.AreNotEqual(mail1, mail2);
+        }
+
     }
 
     [TestFixture]
@@ -98,6 +111,7 @@ namespace Tracker.Tests
         {
             Assert.That(expectedVector, Is.EquivalentTo(Matrices.MultiplyVectorScalar(scalar, vector)));
         }
+
 
         //[Test]
         //public void TestAddVectors(

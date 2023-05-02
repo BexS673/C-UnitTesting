@@ -1,6 +1,6 @@
 ﻿namespace Tracker.Global
 {
-    public struct Mail
+    public record Mail
     {
         private double range;
         private double bearing;
