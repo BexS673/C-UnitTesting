@@ -89,6 +89,7 @@ namespace Tracker.Tests
             Mail mail2 = testMail;
 
             Assert.AreNotEqual(mail1, mail2);
+            //testing if writing new mail and mail is immutable
         }
 
     }

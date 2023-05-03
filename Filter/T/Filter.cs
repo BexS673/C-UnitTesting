@@ -36,7 +36,7 @@ namespace Tracker.T
                         instance = new Filter();
                     }
                     return instance;
-                }
+                } 
             }
         }
 
