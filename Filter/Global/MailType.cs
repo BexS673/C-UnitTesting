@@ -28,8 +28,9 @@
             {
                 if (value >= 0 && value <= Types.Max)
                 {
-                    Math.Round(range, 6);
+                    
                     range = value;
+                    Math.Round(range, 6);
                 }
                 //else raise an exception???
             }
@@ -42,8 +43,9 @@
             }
             set
             {
-                Math.Round(bearing, 6);
+                
                  bearing = value;
+                Math.Round(bearing, 6);
             }
         }
 

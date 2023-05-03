@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using NUnit.Framework.Internal;
 using System.Dynamic;
 using System.Numerics;
+using System.Threading.Tasks;
 
 namespace Tracker.Tests
 {
@@ -50,8 +51,7 @@ namespace Tracker.Tests
         }
 
         [TestCaseSource(typeof(DataClass), nameof(DataClass.ConversionCases))]
-        //[Test]
-        //[FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
+        [Category("Mathematical")]
         public double TestOutput(double time, double v1, double v2)
         {
             Mail testMail;
@@ -60,10 +60,7 @@ namespace Tracker.Tests
             _filter.CallPositionUpdate(); 
             _filter.Output(out testMail);
 
-            //Assert.That(testMail.Range, Is.EqualTo(628.117226)); //rounded to 6 digits
-            //angle test
             return testMail.Range;
-            //Assert.That(Tolerance(628.117226, testMail.Range, 0.00001), Is.True, $"Range calculated as: {testMail.Range}");
         }
         public class DataClass
         {
@@ -71,25 +68,42 @@ namespace Tracker.Tests
             {
                 get
                 {
-                    yield return new TestCaseData(2, 10, 1).Returns(628.117226); //updated the update values so change
-                    yield return new TestCaseData(0, 0, 0).Returns(0.000000);
+                    yield return new TestCaseData(2, 10, 1).Returns(40.199502).SetName("Conversion_positive_vectors"); //updated the update values so change
+                    yield return new TestCaseData(0, 0, 0).Returns(0.000000).SetName("Conversion_0_values");
                 }
             }
 
         }
 
         [Test]
+        [Category("Instances")]
         public void TestNewMailInstance()
         {
+            Mail mail1;
+            Mail mail2;
             Mail testMail;
             _filter.Output(out testMail);
-            Mail mail1 = testMail;
+            mail1 = testMail;
 
             _filter.Output(out testMail);
-            Mail mail2 = testMail;
+            mail2 = testMail;
 
-            Assert.AreNotEqual(mail1, mail2);
+            Assert.AreNotSame(mail1, mail2);
             //testing if writing new mail and mail is immutable
+        }
+
+        [Test]
+        [Category("Threading")]
+        public async Task TestThreadSafety()
+        {
+            Mail testMail;
+            await Task.Run(() => { _filter.UpdatePath(Filter.Mode.update); _filter.CallPositionUpdate(); });
+            await Task.Run(() => { _filter.UpdatePath(Filter.Mode.update); _filter.CallPositionUpdate(); });
+
+
+            _filter.Output(out testMail);
+            Assert.That(testMail.Range, Is.EqualTo(44.721360));
+
         }
 
     }
@@ -106,6 +120,7 @@ namespace Tracker.Tests
 
         private double[] vector;
 
+        [Category("Mathematics")]
         [TestCase(0, new double[] {0, 0}, new double[] { 0, 0 }, TestName = "ScalarMultiply0")]
         [TestCase(-1, new double[] { 0, 0 }, new double[] { 0, 0 }, TestName ="ScalarMultiplyNegative")] 
         public void TestMuliplyVectorScalar(double scalar, double[] vector, double[] expectedVector)
