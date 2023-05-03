@@ -7,31 +7,14 @@ using NUnit.Framework.Internal;
 using System.Dynamic;
 using System.Numerics;
 using System.Threading.Tasks;
+using System.Runtime.Intrinsics;
 
 namespace Tracker.Tests
 {
 
-    //public class FilterFixture : IDisposable
-    //{
-    //    public FilterFixture()
-    //    {
-    //        Filter testFilter = new Filter();
-    //        testFilter.InitialiseData();
-    //    }
-
-    //    public void Dispose() { }
-    //}
-
-    //[TestFixture(typeof(Filter))]
     [TestFixture]
-   // [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
     public class FilterTest
     {
-        //public Filter testFilter;
-        //public FilterTest()
-        //{
-        //    testFilter = new Filter(); ;
-        //}
 
         [SetUp]
         public void SetUp()
@@ -43,12 +26,12 @@ namespace Tracker.Tests
         private Filter _filter;
 
 
-        private static bool Tolerance(in double expected, in double actual, in double tolerance)
-        {
-            double difference = Math.Abs(expected - actual);
-            return difference <= tolerance ? true : false;
+        //private static bool Tolerance(in double expected, in double actual, in double tolerance)
+        //{
+        //    double difference = Math.Abs(expected - actual);
+        //    return difference <= tolerance ? true : false;
 
-        }
+        //}
 
         [TestCaseSource(typeof(DataClass), nameof(DataClass.ConversionCases))]
         [Category("Mathematical")]
@@ -89,7 +72,6 @@ namespace Tracker.Tests
             mail2 = testMail;
 
             Assert.AreNotSame(mail1, mail2);
-            //testing if writing new mail and mail is immutable
         }
 
         [Test]
@@ -116,9 +98,11 @@ namespace Tracker.Tests
         public void Setup()
         {
             vector = new double[2];
+            vector2 = new double[2];
         }
 
         private double[] vector;
+        private double[] vector2;
 
         [Category("Mathematics")]
         [TestCase(0, new double[] {0, 0}, new double[] { 0, 0 }, TestName = "ScalarMultiply0")]
@@ -129,21 +113,14 @@ namespace Tracker.Tests
         }
 
 
-        //[Test]
-        //public void TestAddVectors(
-        //    [Values(-1, 0, 1)] double v1,
-        //    [Range(-1, 1, 1)] double v2,
-        //    [Values(-1, 0, 1)] double v3,
-        //    [Range(-1, 0, 1)] double v4)
-        //{
-        //    double[] vector2 = new double[2];
-        //    vector2[0] = v1;
-        //    vector2[1] = v2;
-        //    vector[0] = v3;
-        //    vector[1] = v4;
-
-        //    Matrices.AddVector(vector, vector2);
-        //}
+        [Test]
+        [Category("Mathematics")]
+        public void TestAddVectors(
+            [Values(-1.0, 0.0, 1.0)] double[] v1,
+            [Random(-10.0, 10.0, 5)] double[] v2)
+        {
+            Matrices.AddVector(v1, v2);
+        }
     }
 
 }
