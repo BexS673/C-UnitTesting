@@ -1,0 +1,96 @@
+11/05/2023 16:24:27
+Waiting to initialise filter
+___________________
+11/05/2023 16:24:28
+Waiting to initialise filter
+___________________
+11/05/2023 16:24:29
+Waiting to initialise filter
+___________________
+11/05/2023 16:24:30
+Waiting to initialise filter
+___________________
+11/05/2023 16:24:31
+Initialised filter. Calling from 10
+___________________
+11/05/2023 16:24:32
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:32
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:32
+Awaiting mail
+___________________
+11/05/2023 16:24:33
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:33
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:33
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:33
+New mail sent to mailbox. Calling on thread 10
+___________________
+11/05/2023 16:24:33
+Mail no: 1. Range: 223.606798. Calling from 1
+___________________
+11/05/2023 16:24:33
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:34
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:34
+Mail no: 1. Range: 223.606798. Calling from 1
+___________________
+11/05/2023 16:24:35
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:35
+New mail sent to mailbox. Calling on thread 10
+___________________
+11/05/2023 16:24:35
+Mail no: 2. Range: 796.0402. Calling from 1
+___________________
+11/05/2023 16:24:36
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:36
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:36
+Mail no: 2. Range: 796.0402. Calling from 1
+___________________
+11/05/2023 16:24:37
+Update made to path. Calling on thread 9
+___________________
+11/05/2023 16:24:37
+New mail sent to mailbox. Calling on thread 10
+___________________
+11/05/2023 16:24:37
+Mail no: 3. Range: 1878.297101. Calling from 1
+___________________
+11/05/2023 16:24:39
+Mail no: 3. Range: 1878.297101. Calling from 1
+___________________
+11/05/2023 16:24:39
+New mail sent to mailbox. Calling on thread 10
+___________________
+11/05/2023 16:24:40
+Mail no: 4. Range: 2960.554002. Calling from 1
+___________________
+11/05/2023 16:24:41
+Mail no: 4. Range: 2960.554002. Calling from 1
+___________________
+11/05/2023 16:24:41
+New mail sent to mailbox. Calling on thread 10
+___________________
+11/05/2023 16:24:42
+Mail no: 5. Range: 4042.810903. Calling from 1
+___________________
+11/05/2023 16:24:43
+Mail no: 5. Range: 4042.810903. Calling from 1
+___________________

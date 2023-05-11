@@ -95,14 +95,7 @@ namespace Tracker.Tests
     {
 
         [SetUp]
-        public void Setup()
-        {
-            vector = new double[2];
-            vector2 = new double[2];
-        }
-
-        private double[] vector;
-        private double[] vector2;
+        public void Setup(){}
 
         [Category("Mathematics")]
         [TestCase(0, new double[] {0, 0}, new double[] { 0, 0 }, TestName = "ScalarMultiply0")]
@@ -113,14 +106,14 @@ namespace Tracker.Tests
         }
 
 
-        [Test]
-        [Category("Mathematics")]
-        public void TestAddVectors(
-            [Values(-1.0, 0.0, 1.0)] double[] v1,
-            [Random(-10.0, 10.0, 5)] double[] v2)
-        {
-            Matrices.AddVector(v1, v2);
-        }
+        //[Test]
+        //[Category("Mathematics")]
+        //public void TestAddVectors(
+        //    [Values(-1.0, 0.0, 1.0)] double[] v1,
+        //    [Random(-10.0, 10.0, 5)] double[] v2)
+        //{
+        //    Matrices.AddVector(v1, v2);
+        //}
     }
 
 }

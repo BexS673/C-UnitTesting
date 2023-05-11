@@ -9,6 +9,7 @@ using System.Timers;
 using System.Reflection.PortableExecutable;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 class Program
 {
@@ -17,26 +18,33 @@ class Program
     public static Random random = new Random();
 
     private static Filter filter = Filter.Instance;
+    private static Logger logger = Logger.Instance;
+    private static Track track = new Track();
 
     private static List<Mail> mailCollect = new List<Mail>();
     private static bool mailboxFull = false;
+    
+
+
     private static async Task Main(string[] args)
     {
         stopwatch.Start();
-        await Task.Run(() => { filter.UpdatePath(Filter.Mode.initialise); });
-        // Task.Run(() => { Start(); });
-        //Task.Run(() => { RandomUpdate(); });
-        Task start =  Start();
+        logger.CleanFile();
+        Task<bool> initialise = track.Initialise();
+
+        
+        while (track.init == false)
+        {
+            logger.Log("Waiting to initialise filter");
+            Thread.Sleep(1000);
+        }
+
+        bool init = await initialise;
+        Task start = Start();
         Task update = RandomUpdate();
         Task stopTimer = StopTimer();
-        Console.WriteLine(start.Status);
-        Console.WriteLine(update.Status);
-        Console.WriteLine(stopTimer.Status);
-        PrintMail();
-        Console.WriteLine(start.Status);
-        Console.WriteLine(update.Status);
-        Console.WriteLine(stopTimer.Status);
-       
+
+        PrintMail();     
     } 
 
     public static async Task Start()
@@ -46,18 +54,15 @@ class Program
         {
             for (int i = 0; i <= 10; i++)
             {
-
-                //await Task.Run(() =>
-                //    {
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
                 filter.CallPositionUpdate();
                 filter.Output(out testMail);
+                logger.Log($"New mail sent to mailbox. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
                 mailCollect.Add(testMail);
-                //   });
             }
             
         });
-        
+       
     }
 
     public static async Task RandomUpdate()
@@ -66,15 +71,9 @@ class Program
         {
             for (int i = 0; i <= 10; i++)
             {
-                //Thread.Sleep(500);
-                //  await Task.Run(() => 
-                //  {
-                Thread.Sleep(random.Next(500));
+                Thread.Sleep(random.Next(1000));
                 filter.UpdatePath(Filter.Mode.update);
-                // });
-                //filter.UpdatePath(Filter.Mode.update);
-
-                //Console.WriteLine("Random update made");
+                logger.Log($"Update made to path. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
             }
         });
 
@@ -87,22 +86,17 @@ class Program
     }
     private static void PrintMail()
     {
-        //Thread.Sleep(2000);
         while (mailboxFull == false)
         {
-            Thread.Sleep(500);
-            Console.WriteLine($"Mail no: {mailCollect.Count}");
-            Console.WriteLine($"Time: {stopwatch.Elapsed}");
+            Thread.Sleep(1000);
             if (mailCollect.Count == 0)
             {
-                Console.WriteLine("Awaiting mail");
+                logger.Log("Awaiting mail");
             }
             else
             {
-                Console.WriteLine($"Range: {mailCollect.Last().Range}");
+                logger.Log($"Mail no: {mailCollect.Count}. Range: {mailCollect.Last().Range}. Calling from {Thread.CurrentThread.ManagedThreadId}");
             }
-            //mailCollect.Remove(mailCollect.First());
-            //  Console.WriteLine($"Bearing: {mailCollect.Last().Bearing}");
         }          
     }
 

@@ -4,14 +4,16 @@
 
 namespace Tracker.T
 {
+    
 
     public class Filter
     {
-        private bool isSmooth;
+        //private bool isSmooth;
         public double time;
         private double[] Vector1 = new double[2];
         private double[] Vector2 = new double[2];
         private double filterTime;
+        private bool isSmooth;
         public enum Mode
         {
             initialise,
