@@ -8,29 +8,29 @@ using System.IO;
 
 namespace Tracker.Global
 {
-    public class Logger
+    public static class Logger
     {
-        private static Logger instance = null;
-        private static readonly object padlock = new object();
-        Logger() { }
+        //private static Logger instance = null;
+        //private static readonly object padlock = new object();
+        //Logger() { }
 
-        public static Logger Instance
-        {
-            get
-            {
-                lock (padlock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new Logger();
-                    }
-                    return instance;
-                }
-            }
-        }
+        //public static Logger Instance
+        //{
+        //    get
+        //    {
+        //        lock (padlock)
+        //        {
+        //            if (instance == null)
+        //            {
+        //                instance = new Logger();
+        //            }
+        //            return instance;
+        //        }
+        //    }
+        //}
 
-        private string path = "C:\\Users\\rsaye\\OneDrive\\Documents\\Capgemini\\Capgemini\\unit-testing-using-nunit\\Filter\\log_test.txt";
-        public void Log(string logMessage)
+        private static string path = "C:\\Users\\rsaye\\OneDrive\\Documents\\Capgemini\\Capgemini\\unit-testing-using-nunit\\Filter\\log_test.txt";
+        public static void Log(string logMessage)
         {
             using (StreamWriter sw = File.AppendText(path))
             {
@@ -41,7 +41,7 @@ namespace Tracker.Global
             
         }
 
-        public void CleanFile()
+        public static void CleanFile()
         {
             File.WriteAllText(path, string.Empty);
         }

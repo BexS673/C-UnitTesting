@@ -18,7 +18,7 @@ class Program
     public static Random random = new Random();
 
     private static Filter filter = Filter.Instance;
-    private static Logger logger = Logger.Instance;
+    //private static Logger logger = Logger.Instance;
     private static Track track = new Track();
 
     private static List<Mail> mailCollect = new List<Mail>();
@@ -29,13 +29,13 @@ class Program
     private static async Task Main(string[] args)
     {
         stopwatch.Start();
-        logger.CleanFile();
+        Logger.CleanFile();
         Task<bool> initialise = track.Initialise();
 
         
         while (track.init == false)
         {
-            logger.Log("Waiting to initialise filter");
+            Logger.Log("Waiting to initialise filter");
             Thread.Sleep(1000);
         }
 
@@ -57,7 +57,7 @@ class Program
                 Thread.Sleep(2000);
                 filter.CallPositionUpdate();
                 filter.Output(out testMail);
-                logger.Log($"New mail sent to mailbox. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
+                Logger.Log($"New mail sent to mailbox. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
                 mailCollect.Add(testMail);
             }
             
@@ -73,7 +73,7 @@ class Program
             {
                 Thread.Sleep(random.Next(1000));
                 filter.UpdatePath(Filter.Mode.update);
-                logger.Log($"Update made to path. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
+                Logger.Log($"Update made to path. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
             }
         });
 

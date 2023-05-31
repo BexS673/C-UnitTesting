@@ -1,6 +1,29 @@
 ﻿namespace Tracker.T
 {
-    public class Matrices
+
+    public class IFloatType
+    {
+        private double value;
+        public double Value
+        {
+            get
+            {
+                Math.Round(value, 6);
+                return value;
+            }
+            set
+            {
+                Math.Round(value, 6);
+            }
+
+        }
+    }
+
+    public class Vector : IFloatType
+    {
+
+    }
+    public static class Matrices
     {
 
         public static double[] MultiplyVectorScalar(in double scalar, in double[] vector)
