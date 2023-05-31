@@ -10,6 +10,7 @@ using System.Reflection.PortableExecutable;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Reflection.Metadata;
 
 class Program
 {
@@ -22,6 +23,10 @@ class Program
 
     private static List<Mail> mailCollect = new List<Mail>();
     private static bool mailboxFull = false;
+
+     
+    private static CustomTaskScheduler scheduler = new CustomTaskScheduler(2);
+    private static TaskFactory factory = new TaskFactory(scheduler);
     
 
 
@@ -30,21 +35,29 @@ class Program
         stopwatch.Start();
         Logger.CleanFile();
          
-        Task<bool> initialise = new Task<bool>(() => track.Initialise());
-        Task start = new Task (() => Start());
-        Task update = new Task(() => RandomUpdate());
-        Task stopTimer = new Task(() => StopTimer());
-
-        initialise.Start();
+        //Task<bool> initialise = Task<bool>.Run( () => track.Initialise());
         Console.WriteLine("Waiting for filter to initialise.");
-        await initialise;
-        Console.WriteLine("Initialised filter.");
+        //await initialise;
+        bool initialised = await Task.FromResult<bool>(track.Initialise());
+        if (initialised == true)
+        {
+            Console.WriteLine("Initialised filter.");
+        }
 
-        start.Start();
-        update.Start();
-        stopTimer.Start();
+        //Task start = Task.Run( () => Start());
+        Task start = factory.StartNew(() => Start(), CancellationToken.None);
+        
+        //Task update = factory.StartNew(() => RandomUpdate(), CancellationToken.None);
+        Task update = Task.Run( () => RandomUpdate());
+        Task stopTimer = Task.Run( () => StopTimer());
 
-        LogMail();     
+        //scheduler.PrintScheduledTask();
+
+        LogMail();
+
+        Task.WaitAll(start, update, stopTimer);
+        Console.WriteLine("Filter ended");
+        //scheduler.PrintScheduledTask();
     } 
 
     public static void Start()
@@ -102,4 +115,81 @@ class Program
     }
 
    
+}
+
+public class CustomTaskScheduler : TaskScheduler
+{
+    [ThreadStatic]
+    private static bool _currentThreadIsProcessingItems;
+    private readonly LinkedList<Task> _tasks = new LinkedList<Task>();
+    private readonly int _maxDegreeOfParellism;
+    private int _delegatesQueueOrRunning = 0;
+    public CustomTaskScheduler(int maxDegreeOfParellism)
+    {
+        if (maxDegreeOfParellism < 1) throw new ArgumentOutOfRangeException("maxDegressOfParellism");
+        _maxDegreeOfParellism = maxDegreeOfParellism;        
+    }
+
+    protected sealed override void QueueTask(Task task)
+    {
+        lock (_tasks)
+        {
+            _tasks.AddLast(task);
+            if (_delegatesQueueOrRunning < _maxDegreeOfParellism)
+            {
+                ++_delegatesQueueOrRunning;
+            }
+        }
+    }
+
+    protected sealed override bool TryExecuteTaskInline(Task task, bool taskWasPreviouslyQueued)
+    {
+
+        if (!_currentThreadIsProcessingItems) return false;
+        if (taskWasPreviouslyQueued)
+        {
+            if (TryDequeue(task))
+            {
+                return base.TryExecuteTask(task);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return base.TryExecuteTask(task);
+        }
+        
+    }
+
+    protected sealed override bool TryDequeue(Task task)
+    {
+        lock (_tasks) return _tasks.Remove(task);
+    }
+
+    protected sealed override IEnumerable<Task> GetScheduledTasks()
+    {
+        bool lockTaken = false;
+        try
+        {
+            Monitor.TryEnter(_tasks, ref lockTaken);
+            if (lockTaken) return _tasks;
+            else throw new NotSupportedException();
+        }
+        finally
+        {
+            if (lockTaken) Monitor.Exit(_tasks);
+        }
+    }
+
+    public void PrintScheduledTask()
+    {
+        IEnumerable<Task> tasks = GetScheduledTasks();
+        foreach (Task scheduledTask in tasks)
+        {
+            Console.WriteLine($"Task {scheduledTask.Id} status: scheduledTask.Status");
+        }
+    }
 }

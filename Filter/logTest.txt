@@ -1,69 +1,93 @@
-31/05/2023 11:09:40
+31/05/2023 15:13:45
 Awaiting initialise
 ___________________
-31/05/2023 11:09:40
+31/05/2023 15:13:45
 Awaiting initialise
 ___________________
-31/05/2023 11:09:41
+31/05/2023 15:13:46
 Awaiting initialise
 ___________________
-31/05/2023 11:09:43
+31/05/2023 15:13:48
 Awaiting initialise
 ___________________
-31/05/2023 11:09:47
-Update made to path. Calling on thread 16
+31/05/2023 15:13:52
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:47
-Update made to path. Calling on thread 16
+31/05/2023 15:13:52
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:47
+31/05/2023 15:13:52
 Awaiting mail
 ___________________
-31/05/2023 11:09:47
-Update made to path. Calling on thread 16
+31/05/2023 15:13:53
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:48
-Update made to path. Calling on thread 16
+31/05/2023 15:13:53
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:48
-New mail sent to mailbox. Calling on thread 15
+31/05/2023 15:13:54
+Awaiting mail
 ___________________
-31/05/2023 11:09:48
-Mail no: 1. Range: 143.108351. Calling from 9
+31/05/2023 15:13:54
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:49
-Update made to path. Calling on thread 16
+31/05/2023 15:13:54
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:49
-Update made to path. Calling on thread 16
+31/05/2023 15:13:54
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:49
-Mail no: 1. Range: 143.108351. Calling from 9
+31/05/2023 15:13:55
+Awaiting mail
 ___________________
-31/05/2023 11:09:50
-Update made to path. Calling on thread 16
+31/05/2023 15:13:55
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:50
-New mail sent to mailbox. Calling on thread 15
+31/05/2023 15:13:55
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:50
-Mail no: 2. Range: 581.377674. Calling from 9
+31/05/2023 15:13:56
+Awaiting mail
 ___________________
-31/05/2023 11:09:51
-Update made to path. Calling on thread 16
+31/05/2023 15:13:56
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:51
-Update made to path. Calling on thread 16
+31/05/2023 15:13:56
+Update made to path. Calling on thread 14
 ___________________
-31/05/2023 11:09:51
-Mail no: 2. Range: 581.377674. Calling from 9
+31/05/2023 15:13:57
+Awaiting mail
 ___________________
-31/05/2023 11:09:52
-Update made to path. Calling on thread 16
+31/05/2023 15:13:58
+Awaiting mail
 ___________________
-31/05/2023 11:09:52
-New mail sent to mailbox. Calling on thread 15
+31/05/2023 15:13:59
+Awaiting mail
 ___________________
-31/05/2023 11:09:52
-Mail no: 3. Range: 1475.804865. Calling from 9
+31/05/2023 15:14:00
+Awaiting mail
+___________________
+31/05/2023 15:14:01
+Awaiting mail
+___________________
+31/05/2023 15:14:02
+Awaiting mail
+___________________
+31/05/2023 15:14:03
+Awaiting mail
+___________________
+31/05/2023 15:14:04
+Awaiting mail
+___________________
+31/05/2023 15:14:05
+Awaiting mail
+___________________
+31/05/2023 15:14:06
+Awaiting mail
+___________________
+31/05/2023 15:14:07
+Awaiting mail
+___________________
+31/05/2023 15:14:08
+Awaiting mail
 ___________________
