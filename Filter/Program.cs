@@ -18,7 +18,6 @@ class Program
     public static Random random = new Random();
 
     private static Filter filter = Filter.Instance;
-    //private static Logger logger = Logger.Instance;
     private static Track track = new Track();
 
     private static List<Mail> mailCollect = new List<Mail>();
@@ -30,72 +29,74 @@ class Program
     {
         stopwatch.Start();
         Logger.CleanFile();
-        Task<bool> initialise = track.Initialise();
+         
+        Task<bool> initialise = new Task<bool>(() => track.Initialise());
+        Task start = new Task (() => Start());
+        Task update = new Task(() => RandomUpdate());
+        Task stopTimer = new Task(() => StopTimer());
 
-        
-        while (track.init == false)
-        {
-            Logger.Log("Waiting to initialise filter");
-            Thread.Sleep(1000);
-        }
+        initialise.Start();
+        Console.WriteLine("Waiting for filter to initialise.");
+        await initialise;
+        Console.WriteLine("Initialised filter.");
 
-        bool init = await initialise;
-        Task start = Start();
-        Task update = RandomUpdate();
-        Task stopTimer = StopTimer();
+        start.Start();
+        update.Start();
+        stopTimer.Start();
 
-        PrintMail();     
+        LogMail();     
     } 
 
-    public static async Task Start()
+    public static void Start()
     {
 
-        await Task.Run(() =>
-        {
+        //await Task.Run(() =>
+        //{
             for (int i = 0; i <= 10; i++)
             {
                 Thread.Sleep(2000);
                 filter.CallPositionUpdate();
                 filter.Output(out testMail);
-                Logger.Log($"New mail sent to mailbox. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
+                Logger.Log($"New mail sent to mailbox. Calling on thread {Task.CurrentId}");
                 mailCollect.Add(testMail);
             }
             
-        });
+        //});
        
     }
 
-    public static async Task RandomUpdate()
+    public static void RandomUpdate()
     {
-        await Task.Run(() =>
-        {
+        //await Task.Run(() =>
+        //{
             for (int i = 0; i <= 10; i++)
             {
                 Thread.Sleep(random.Next(1000));
                 filter.UpdatePath(Filter.Mode.update);
-                Logger.Log($"Update made to path. Calling on thread {Thread.CurrentThread.ManagedThreadId}");
+                Logger.Log($"Update made to path. Calling on thread {Task.CurrentId}");
             }
-        });
+        //});
 
     }
 
-    private static async Task StopTimer()
+    private static void StopTimer()
     {
-        await Task.Delay(random.Next(20000));
+        Thread.Sleep(random.Next(20000));
         mailboxFull = true;
     }
-    private static void PrintMail()
+    private static void LogMail()
     {
         while (mailboxFull == false)
         {
             Thread.Sleep(1000);
+            Console.WriteLine("Logging mail to logger");
             if (mailCollect.Count == 0)
             {
-                logger.Log("Awaiting mail");
+                Logger.Log("Awaiting mail");
             }
             else
             {
-                logger.Log($"Mail no: {mailCollect.Count}. Range: {mailCollect.Last().Range}. Calling from {Thread.CurrentThread.ManagedThreadId}");
+                Logger.Log($"Mail no: {mailCollect.Count}. Range: {mailCollect.Last().Range}. Calling from {Thread.CurrentThread.ManagedThreadId}");
             }
         }          
     }

@@ -21,12 +21,10 @@ namespace Tracker.T
             update
         }
 
-        //vector should be of type tFloatType, which is float restricted to 6 digits
-
         private static Filter instance = null;
         private static readonly object padlock = new object();
         Filter() { }
-
+         
         public static Filter Instance
         {
             get
@@ -87,7 +85,7 @@ namespace Tracker.T
                 angle -= 2.0 * Math.PI;
             }
         }
-        public void Output(out Mail mail)//input is mailtype (how to write a record)????
+        public void Output(out Mail mail)
         {
             double temp_x;
             double temp_y;
@@ -132,8 +130,8 @@ namespace Tracker.T
 
         }
 
-        public void UpdateData(double t = 2.0, double v1 = 1.0, double v2 = 2.0 ) //should this be public or called through the UpdatePath method
-        {
+        public void UpdateData(double t = 2.0, double v1 = 1.0, double v2 = 2.0 )
+        { 
             filterTime += t;
             Vector1[0] += v1;
             Vector1[1] += v2;

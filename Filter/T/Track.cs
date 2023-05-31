@@ -12,15 +12,18 @@ namespace Tracker.T
         public bool init = false;
         Filter filter = Filter.Instance;
         //Logger logger = Logger.Instance;
-        public async Task<bool> Initialise()
+        public bool Initialise()
         {
-            await Task.Run(() =>
+            //await Task.Run(() =>
+            //{
+            for (int i = 0; i < 4000; i+=1000)
             {
-                Thread.Sleep(4000);
+                Logger.Log("Awaiting initialise");
+                Thread.Sleep(i);
+            }
                 filter.UpdatePath(Filter.Mode.initialise);
-                Logger.Log($"Initialised filter. Calling from {Thread.CurrentThread.ManagedThreadId}");
                 init = true;
-            });
+            //});
             return init;
         }
     }

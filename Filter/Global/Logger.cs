@@ -10,26 +10,8 @@ namespace Tracker.Global
 {
     public static class Logger
     {
-        //private static Logger instance = null;
-        //private static readonly object padlock = new object();
-        //Logger() { }
 
-        //public static Logger Instance
-        //{
-        //    get
-        //    {
-        //        lock (padlock)
-        //        {
-        //            if (instance == null)
-        //            {
-        //                instance = new Logger();
-        //            }
-        //            return instance;
-        //        }
-        //    }
-        //}
-
-        private static string path = "C:\\Users\\rsaye\\OneDrive\\Documents\\Capgemini\\Capgemini\\unit-testing-using-nunit\\Filter\\log_test.txt";
+        private static string path = "C:\\Users\\rsaye\\OneDrive\\Documents\\Capgemini\\Capgemini\\unit-testing-using-nunit\\Filter\\logTest.txt";
         public static void Log(string logMessage)
         {
             using (StreamWriter sw = File.AppendText(path))
